@@ -24,11 +24,7 @@ function App() {
 
     //Case all Selected
     if(selectedItem[0] === 'Select all'){
-      if(!selectedItem[1]){
-        tempItems.map(element => element[selectedItem.length-1]=!selectedItemValue);
-      }else{
-        tempItems.map(element => element[selectedItem.length-1]=!selectedItemValue);
-      }
+      items.map(element => element[selectedItem.length-1]=!selectedItemValue);
       SetItems(tempItems);
 
       // console.log(items); //=> control value
@@ -54,15 +50,15 @@ function App() {
   };
 
     //Handle UI cases
-  const createCheckboxes = () => (
-    items.map((item,i) => <CheckBox item={item} key={i} handleClickParent={ () => checkBoxSelectedFunction(item)}  />)
-  )
+  const createCheckboxes = items.map((item,i) => {
+  return (<CheckBox item={item} key={i} handleClickParent={ () => checkBoxSelectedFunction(item)}  />)
+  })
   
   return (
     <div className="App">
       <h1>CheckBox</h1>
       <form>
-        {createCheckboxes()}
+        {createCheckboxes}
       </form>
     </div>
   );
